@@ -3,18 +3,32 @@ public class LabEquipment extends Equipment {
     private String equipmentName;
     private int equipmentCount;
 
-    // Override
+    public LabEquipment(int equipmentId, double cost, String equipmentName, int equipmentCount) {
+        super(equipmentId, cost);
+        this.equipmentName = equipmentName;
+        this.equipmentCount = equipmentCount;
+    }
+
     public void equipmentDetails() {
-        System.out.println("Displaying lab equipment details...");
+        System.out.println("Lab Equipment ID: " + equipmentId);
+        System.out.println("Name: " + equipmentName);
+        System.out.println("Count: " + equipmentCount);
+        System.out.println("Cost: " + cost);
     }
 
-    // Override
     public void purchaseEquipment() {
-        System.out.println("Purchasing new lab equipment...");
+        System.out.println("Purchasing new lab equipment: " + equipmentName);
     }
 
-    // Override
     public void repair() {
-        System.out.println("Repairing lab equipment...");
+        System.out.println("Repairing lab equipment: " + equipmentName);
+    }
+
+    public String getEquipmentName() {
+        return equipmentName;
+    }
+
+    public int getEquipmentCount() {
+        return equipmentCount;
     }
 }

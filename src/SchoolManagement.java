@@ -14,9 +14,15 @@ public class SchoolManagement {
 
     public void isOpen() {
         System.out.println("Checking if the school is open...");
+        System.out.println("Yes...\n");
+
     }
 
     public void schoolDetails() {
         System.out.println("Displaying school details...");
+        System.out.println("schoolName : " + this.schoolName);
+        System.out.println("address : " + this.address);
+        System.out.println("contactNumber : " + this.contactNumber);
+        System.out.println("mediumOfStudy : " + this.mediumOfStudy +"\n");
     }
 }

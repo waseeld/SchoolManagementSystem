@@ -1,5 +1,6 @@
 // Programmed by: Wasel Mohammed Almahri (ID: 451014913)
 
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -38,17 +39,19 @@ public class Main {
         System.out.print("Enter number of seats in auditorium:");
         int totalSeats = scanner.nextInt();
         scanner.nextLine();
-        Auditorium auditorium = new Auditorium(totalSeats);
+        school.createAuditorium(totalSeats);
+        Auditorium auditorium = school.auditorium;
 
         System.out.print("Enter playground area:");
         double playgroundArea = scanner.nextDouble();
         scanner.nextLine();
-        Playground playground = new Playground(playgroundArea);
+        school.createPlayground(playgroundArea);
+        Playground playground = school.playground;
 
         System.out.print("dfsfHow many classrooms?");
         int classCount = scanner.nextInt();
         scanner.nextLine();
-        Classroom[] classrooms = new Classroom[classCount];
+        // Classroom[] classrooms = new Classroom[classCount];
 
         for (int i = 0; i < classCount; i++) {
             System.out.println("Classroom " + (i + 1) + " details:");
@@ -65,13 +68,14 @@ public class Main {
             int equipmentId = scanner.nextInt();
             scanner.nextLine();
 
-            classrooms[i] = new Classroom(classId, className, teacherId, studentCount, equipmentId);
+            school.addClassroom(new Classroom(classId, className, teacherId, studentCount, equipmentId));
         }
 
         System.out.println("How many labs?");
         int labCount = scanner.nextInt();
         scanner.nextLine();
-        Lab[] labs = new Lab[labCount];
+        // Lab[] labs = new Lab[labCount];
+        List<Lab> labs = school.getLab();
 
         for (int i = 0; i < labCount; i++) {
             System.out.println("Lab " + (i + 1) + " details:");
@@ -86,13 +90,13 @@ public class Main {
             int eqId = scanner.nextInt();
             scanner.nextLine();
 
-            labs[i] = new Lab(labId, inchargeId, labName, eqId);
+            labs.add(new Lab(labId, inchargeId, labName, eqId));
         }
 
         System.out.println("How many teachers?");
         int teacherCount = scanner.nextInt();
         scanner.nextLine();
-        Teacher[] teachers = new Teacher[teacherCount];
+        List<Teacher> teachers = school.getTeachers();
 
         for (int i = 0; i < teacherCount; i++) {
             System.out.println("Teacher " + (i + 1) + " details:");
@@ -109,7 +113,7 @@ public class Main {
             System.out.print("Enter subject:");
             String subject = scanner.nextLine();
 
-            teachers[i] = new Teacher(id, name, salary, depId, subject);
+            teachers.add(new Teacher(id, name, salary, depId, subject));
         }
 
         System.out.println("How many support staff?");
@@ -135,10 +139,11 @@ public class Main {
 
         System.out.println("Enter notice board incharge name:");
         String inchargeName = scanner.nextLine();
-        NoticeBoard noticeBoard = new NoticeBoard(inchargeName);
+        school.createNoticeBoard(inchargeName);
+        NoticeBoard noticeBoard = school.noticeBoard;
 
-        Student[] students = new Student[100];
-        Bus[] buses = new Bus[20];
+        List<Student> students = school.getStudents();
+        List<Bus> buses = school.getBuses();
 
         boolean running = true;
 
@@ -171,14 +176,17 @@ public class Main {
                         String areaList = scanner.nextLine();
 
                         Bus bus = new Bus(busId, driverId, areaList, busNumber, capacity);
-                        for (int i = 0; i < buses.length; i++) {
-                            if (buses[i] == null) {
-                                buses[i] = bus;
-                                break;
-                            }
-                        }
+                        // for (int i = 0; i < school.getBuses().size(); i++) {
+                        //     if (buses.get(i) == null) {
+                        //         school.addBus(bus);
+                        //         break;
+                        //     }
+                        // }
+
+                        school.addBus(bus);
                         System.out.println("Bus added.");
                     } else if (busChoice == 2) {
+                        System.out.println("Bus count = " + buses.size());
                         for (Bus b : buses) {
                             if (b != null) {
                                 b.busDetails();
@@ -233,12 +241,13 @@ public class Main {
                             s = new HigherSecondaryStudent(sid, sname, sClassId, section, sBusId, standard);
                         }
 
-                        for (int i = 0; i < students.length; i++) {
-                            if (students[i] == null) {
-                                students[i] = s;
-                                break;
-                            }
-                        }
+                        // for (int i = 0; i < students.size(); i++) {
+                        //     if (students.get(i) == null) {
+                        //         school.addStudent(s);
+                        //         break;
+                        //     }
+                        // }
+                        school.addStudent(s);
                         System.out.println("Student added.");
                     } else if (studChoice == 2) {
                         for (Student s : students) {
@@ -329,7 +338,7 @@ public class Main {
                     scanner.nextLine();
 
                     if (classChoice == 1) {
-                        for (Classroom c : classrooms) {
+                        for (Classroom c : school.getClassrooms()) {
                             if (c != null) {
                                 c.classDetails();
                                 System.out.println();

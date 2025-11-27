@@ -4,51 +4,64 @@ import java.util.Scanner;
 
 public class Main {
 
+    public static void MenuMsg() {
+        System.out.println();
+        System.out.println("===== School Management Menu =====");
+        System.out.println("A- Bus");
+        System.out.println("B- Student");
+        System.out.println("C- Employee");
+        System.out.println("D- Class");
+        System.out.println("E- NoticeBoard");
+        System.out.println("F- Auditorium");
+        System.out.println("G- ShowSchoolDetails");
+        System.out.println("H- Exit");
+        System.out.print("Choose option: ");
+    }
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Enter school name:");
+        System.out.print("Enter school name:");
         String schoolName = scanner.nextLine();
 
-        System.out.println("Enter school address:");
+        System.out.print("Enter school address:");
         String address = scanner.nextLine();
 
-        System.out.println("Enter contact number:");
+        System.out.print("Enter contact number:");
         String contactNumber = scanner.nextLine();
 
-        System.out.println("Enter medium of study:");
+        System.out.print("Enter medium of study:");
         String mediumOfStudy = scanner.nextLine();
 
         SchoolManagement school = new SchoolManagement(schoolName, address, contactNumber, mediumOfStudy);
 
-        System.out.println("Enter number of seats in auditorium:");
+        System.out.print("Enter number of seats in auditorium:");
         int totalSeats = scanner.nextInt();
         scanner.nextLine();
         Auditorium auditorium = new Auditorium(totalSeats);
 
-        System.out.println("Enter playground area:");
+        System.out.print("Enter playground area:");
         double playgroundArea = scanner.nextDouble();
         scanner.nextLine();
         Playground playground = new Playground(playgroundArea);
 
-        System.out.println("How many classrooms?");
+        System.out.print("dfsfHow many classrooms?");
         int classCount = scanner.nextInt();
         scanner.nextLine();
         Classroom[] classrooms = new Classroom[classCount];
 
         for (int i = 0; i < classCount; i++) {
             System.out.println("Classroom " + (i + 1) + " details:");
-            System.out.println("Enter class id:");
+            System.out.print("Enter class id:");
             int classId = scanner.nextInt();
             scanner.nextLine();
-            System.out.println("Enter class name:");
+            System.out.print("Enter class name:");
             String className = scanner.nextLine();
-            System.out.println("Enter teacher id:");
+            System.out.print("Enter teacher id:");
             int teacherId = scanner.nextInt();
-            System.out.println("Enter student count:");
+            System.out.print("Enter student count:");
             int studentCount = scanner.nextInt();
-            System.out.println("Enter equipment id:");
+            System.out.print("Enter equipment id:");
             int equipmentId = scanner.nextInt();
             scanner.nextLine();
 
@@ -62,14 +75,14 @@ public class Main {
 
         for (int i = 0; i < labCount; i++) {
             System.out.println("Lab " + (i + 1) + " details:");
-            System.out.println("Enter lab id:");
+            System.out.print("Enter lab id:");
             int labId = scanner.nextInt();
-            System.out.println("Enter incharge id:");
+            System.out.print("Enter incharge id:");
             int inchargeId = scanner.nextInt();
             scanner.nextLine();
-            System.out.println("Enter lab name:");
+            System.out.print("Enter lab name:");
             String labName = scanner.nextLine();
-            System.out.println("Enter equipment id:");
+            System.out.print("Enter equipment id:");
             int eqId = scanner.nextInt();
             scanner.nextLine();
 
@@ -83,17 +96,17 @@ public class Main {
 
         for (int i = 0; i < teacherCount; i++) {
             System.out.println("Teacher " + (i + 1) + " details:");
-            System.out.println("Enter id:");
+            System.out.print("Enter id:");
             int id = scanner.nextInt();
             scanner.nextLine();
-            System.out.println("Enter name:");
+            System.out.print("Enter name:");
             String name = scanner.nextLine();
-            System.out.println("Enter salary:");
+            System.out.print("Enter salary:");
             double salary = scanner.nextDouble();
-            System.out.println("Enter department id:");
+            System.out.print("Enter department id:");
             int depId = scanner.nextInt();
             scanner.nextLine();
-            System.out.println("Enter subject:");
+            System.out.print("Enter subject:");
             String subject = scanner.nextLine();
 
             teachers[i] = new Teacher(id, name, salary, depId, subject);
@@ -106,14 +119,14 @@ public class Main {
 
         for (int i = 0; i < staffCount; i++) {
             System.out.println("Support staff " + (i + 1) + " details:");
-            System.out.println("Enter id:");
+            System.out.print("Enter id:");
             int id = scanner.nextInt();
             scanner.nextLine();
-            System.out.println("Enter name:");
+            System.out.print("Enter name:");
             String name = scanner.nextLine();
-            System.out.println("Enter salary:");
+            System.out.print("Enter salary:");
             double salary = scanner.nextDouble();
-            System.out.println("Enter department id:");
+            System.out.print("Enter department id:");
             int depId = scanner.nextInt();
             scanner.nextLine();
 
@@ -130,17 +143,7 @@ public class Main {
         boolean running = true;
 
         while (running) {
-            System.out.println();
-            System.out.println("===== School Management Menu =====");
-            System.out.println("A- Bus");
-            System.out.println("B- Student");
-            System.out.println("C- Employee");
-            System.out.println("D- Class");
-            System.out.println("E- NoticeBoard");
-            System.out.println("F- Auditorium");
-            System.out.println("G- ShowSchoolDetails");
-            System.out.println("H- Exit");
-            System.out.print("Choose option: ");
+            MenuMsg();
             String option = scanner.nextLine().toUpperCase();
 
             switch (option) {
@@ -154,17 +157,17 @@ public class Main {
                     scanner.nextLine();
 
                     if (busChoice == 1) {
-                        System.out.println("Enter bus id:");
+                        System.out.print("Enter bus id:");
                         int busId = scanner.nextInt();
-                        System.out.println("Enter driver id:");
+                        System.out.print("Enter driver id:");
                         int driverId = scanner.nextInt();
                         scanner.nextLine();
-                        System.out.println("Enter bus number:");
+                        System.out.print("Enter bus number:");
                         String busNumber = scanner.nextLine();
-                        System.out.println("Enter capacity:");
+                        System.out.print("Enter capacity:");
                         int capacity = scanner.nextInt();
                         scanner.nextLine();
-                        System.out.println("Enter area list:");
+                        System.out.print("Enter area list:");
                         String areaList = scanner.nextLine();
 
                         Bus bus = new Bus(busId, driverId, areaList, busNumber, capacity);
@@ -207,19 +210,19 @@ public class Main {
                         int type = scanner.nextInt();
                         scanner.nextLine();
 
-                        System.out.println("Enter student id:");
+                        System.out.print("Enter student id:");
                         int sid = scanner.nextInt();
                         scanner.nextLine();
-                        System.out.println("Enter student name:");
+                        System.out.print("Enter student name:");
                         String sname = scanner.nextLine();
-                        System.out.println("Enter class id:");
+                        System.out.print("Enter class id:");
                         int sClassId = scanner.nextInt();
                         scanner.nextLine();
-                        System.out.println("Enter section:");
+                        System.out.print("Enter section:");
                         String section = scanner.nextLine();
-                        System.out.println("Enter bus id:");
+                        System.out.print("Enter bus id:");
                         int sBusId = scanner.nextInt();
-                        System.out.println("Enter standard:");
+                        System.out.print("Enter standard:");
                         int standard = scanner.nextInt();
                         scanner.nextLine();
 
@@ -280,7 +283,7 @@ public class Main {
                                 }
                             }
                         } else if (tChoice == 2) {
-                            System.out.println("Enter teacher id:");
+                            System.out.print("Enter teacher id:");
                             int id = scanner.nextInt();
                             scanner.nextLine();
                             for (Teacher t : teachers) {
@@ -305,7 +308,7 @@ public class Main {
                                 }
                             }
                         } else if (sChoice == 2) {
-                            System.out.println("Enter staff id:");
+                            System.out.print("Enter staff id:");
                             int id = scanner.nextInt();
                             scanner.nextLine();
                             for (SupportStaff st : supportStaff) {
@@ -346,10 +349,10 @@ public class Main {
                     if (nbChoice == 1) {
                         noticeBoard.display();
                     } else if (nbChoice == 2) {
-                        System.out.println("Enter content:");
+                        System.out.print("Enter content:");
                         String content = scanner.nextLine();
                         noticeBoard.addContent(content);
-                        System.out.println("Content added.");
+                        System.out.print("Content added.");
                     }
                     break;
 
@@ -363,13 +366,13 @@ public class Main {
                     scanner.nextLine();
 
                     if (audChoice == 1) {
-                        System.out.println("Enter event name:");
+                        System.out.print("Enter event name:");
                         String eventName = scanner.nextLine();
-                        System.out.println("Enter event date:");
+                        System.out.print("Enter event date:");
                         String eventDate = scanner.nextLine();
-                        System.out.println("Enter event time:");
+                        System.out.print("Enter event time:");
                         String eventTime = scanner.nextLine();
-                        System.out.println("Enter number of participants:");
+                        System.out.print("Enter number of participants:");
                         int participants = scanner.nextInt();
                         scanner.nextLine();
 
